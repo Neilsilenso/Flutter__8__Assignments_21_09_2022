@@ -8,46 +8,86 @@ If the quantity is not positive, it should be set to 0. If the price per item is
 set to 0.0. Write a test application named InvoiceTest that demonstrates class Invoice’s capabilities.
  */
 
-class Invoice{
-  int partNumber=0;
+import 'dart:io';
+
+class Invoice {
+  int partNumber = 0;
   String? partDescription;
-  int quantity=0;
-  var price=0;
-  Invoice(int pn,String pd,int q,var p){
-    partNumber=pn;
-    partDescription=pd;
-    quantity=q;
-    price=p;
+  int quantity = 0;
+  double price = 0;
+  setPartNum(int partNumber) {
+    this.partNumber = partNumber;
   }
-  setPartNum(int partNumber){
-    this.partNumber=partNumber;
-  }
-  getPartNum(){
+  getPartNum() {
     return partNumber;
   }
-  setPartDes(String partDescription){
-    this.partDescription=partDescription;
+
+  setPartDes(String partDescription) {
+    this.partDescription = partDescription;
   }
-  getPartDes(){
+
+  getPartDes() {
     this.partDescription;
   }
-  setQuantity(int quantity){
-    this.quantity=quantity;
-  }
-  getQuantity(){
-    return quantity;
-  }
-  setPrice(var price){
-    this.price=price;
-  }
-  getPrice(){
-    return price;
-  }
-}
-class GetInvoiceAmount extends Invoice{
-  GetInvoiceAmount(super.pn, super.pd, super.q, super.p);
 
+  setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
+
+  getQuantity() {
+    if (quantity < 0) {
+      quantity = 0;
+    }
+    print(quantity);
+  }
+
+  setPrice(var price) {
+    this.price = price;
+  }
+
+  getPrice() {
+    if (price < 0) {
+      price = 0.0;
+    }
+    print(price);
+  }
+
+  double getInvoice() {
+    double invoiceAmount;
+    return invoiceAmount = quantity * price;
+  }
 }
 void main(){
-
+  int partno=0,quantity=0,a=0,b=0;
+  var description;
+  var price;
+  double result,result2;
+  price=a.toDouble();
+  Invoice iin=Invoice();
+  iin.getPartNum();
+  iin.getPartDes();
+  iin.getQuantity();
+  iin.getPrice();
+  result=iin.getInvoice();
+  print("Invoice amount : $result");
+  Invoice iin2=Invoice();
+  stdout.write("Enter the part number : ");
+  partno=int.parse(stdin.readLineSync()!);
+  iin2.setPartNum(partno);
+  stdout.write("Enter the part Description : ");
+  description=stdin.readLineSync();
+  iin2.setPartDes(description);
+  stdout.write("Enter the quantity : ");
+  quantity=int.parse(stdin.readLineSync()!);
+  iin2.setQuantity(quantity);
+  stdout.write("Enter the price : ");
+  b=int.parse(stdin.readLineSync()!);
+  price=b.toDouble();
+  iin2.setPrice(price);
+  iin2.getPartNum();
+  iin2.getPartDes();
+  iin2.getQuantity();
+  iin2.getPrice();
+  result2=iin2.getInvoice();
+  print("Invoice amount : $result2");
 }
