@@ -1,10 +1,10 @@
 // Write a Dart program of swap two elements in an list.
+import 'package:collection/collection.dart';
 void main(){
-  var element1=[1,2,3,4];
-  print("List before swapping $element1 \n");
-  int number1=element1[0];
-  element1.removeAt(0);
-  int number2=element1[1];
-  element1.insert(1, number1);
-  print("List after swapping $element1");
+  var list=[1,2,3,4];
+  print("before swap");
+  print(list);
+  print("after swap");
+  list.swap(0,3);
+  print(list);
 }
